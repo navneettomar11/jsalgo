@@ -1,0 +1,7 @@
+coverage
+node_modules
+test
+package.json
+karma.conf.js
+docs
+

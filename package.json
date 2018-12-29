@@ -1,0 +1,34 @@
+{
+  "name": "jsalgo",
+  "version": "1.0.0",
+  "description": "Data Structures and algo on javascript",
+  "main": "index.js",
+  "bin":{
+    "jshint": "./node_modules/jshint/bin/jshint"
+  },
+  "scripts": {
+    "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
+    "unit": "karma start karma.conf.js ",
+    "jshint": "node ./node_modules/jshint/bin/jshint js",
+    "test": "npm run unit"
+    
+  },
+  "keywords": [
+    "Algorithms",
+    "Data",
+    "Structure"
+  ],
+  "author": "Navneet Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "docdash": "^1.0.1",
+    "jasmine-core": "^3.3.0",
+    "jsdoc": "^3.5.5",
+    "jshint": "^2.9.7",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0"
+  }
+}
