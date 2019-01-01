@@ -43,7 +43,7 @@ HuffmanCode.prototype.getCharacterFrequency = function(charArray){
 /**
  * Create Huffman code tree
  */
-HuffmanCode.prototype.createTree = function(str){
+HuffmanCode.prototype.createEncodeTree = function(str){
 	var characterFrequencyList,strCharArray, firstNode, secondNode, nwNode;
 	// Convert given string into character array
 	strCharArray  = converStringToCharArray(str);
@@ -90,21 +90,16 @@ HuffmanCode.prototype.printTree = function(tree, printList){
  * @param {boolean} reverse
  * @param {string} prefix
  */
-HuffmanCode.prototype.createTableCode = function(tree, reverse, prefix){
+HuffmanCode.prototype.createEncodeTableCode = function(tree, prefix){
 	if(tree === undefined || tree === null){
 		return;
 	}
-	reverse = reverse || false;
 	var tableCode = {};
 	if(tree.left  && tree.right ){
-		mixin(tableCode, this.createTableCode(tree.left,reverse,!!prefix?prefix + '0': '0'));
-		mixin(tableCode, this.createTableCode(tree.right,reverse,!!prefix?prefix + '1':'1'));
+		mixin(tableCode, this.createEncodeTableCode(tree.left,!!prefix?prefix + '0': '0'));
+		mixin(tableCode, this.createEncodeTableCode(tree.right,!!prefix?prefix + '1':'1'));
 	}else if(!tree.left && !tree.right){
-		if(reverse){
-			tableCode[prefix] = tree.data
-		}else{
 			tableCode[tree.data] = prefix;
-		}
 	}
 	return tableCode;
 }
@@ -118,8 +113,8 @@ HuffmanCode.prototype.encode = function(str){
 	if(str === undefined || str === null){
 		return str;
 	}
-	tree = this.createTree(str);
-	tableCodeObj = this.createTableCode(tree);
+	tree = this.createEncodeTree(str);
+	tableCodeObj = this.createEncodeTableCode(tree);
 	for(idx = 0; idx < str.length; idx++){
 		character = str.charAt(idx);
 		encodeStr+=tableCodeObj[character];
@@ -132,11 +127,33 @@ HuffmanCode.prototype.encode = function(str){
  * @param {string} decodeString
  * @param {object} huffmanCodeTree
  */
-HuffmanCode.prototype.decode = function(decodeString, huffmanCodeTree){
-	var tableCodeMap, idx;
-	tableCodeMap = this.createTableCode(huffmanCodeTree, true);
-	for(idx=0; idx < decodeString.length; idx++){
-
+HuffmanCode.prototype.decode = function(decodedString, huffmanTreeRootNode){
+	var tempNode, idx, c, encodedString = '';
+	if(decodedString === undefined || decodedString === null){
+		return decodedString;
 	}
+	if(huffmanTreeRootNode === undefined || huffmanTreeRootNode === null){
+		return encodedString;
+	}
+	tempNode = huffmanTreeRootNode;
+	for(idx = 0; idx < decodedString.length; idx ++){
+		c = decodedString.charAt(idx);
+		
+		if(c === '1'){
+			tempNode = tempNode.right;
+		}else if(c === '0'){
+			tempNode = tempNode.left;
+		}else{
+			throw new Error("Invalid decoded string");
+		}
+		//checking node is a leaf node
+		if(!tempNode.right && !tempNode.left){
+			encodedString+=tempNode.data;
+			tempNode = huffmanTreeRootNode; //move back to root node;
+		}
+		
+	
+	}
+	return encodedString;
 	
 }
