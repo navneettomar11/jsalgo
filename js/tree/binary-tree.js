@@ -200,4 +200,58 @@ BinaryTree.prototype.levelOrderTraversal = function(){
 	return levelOrderTraversal;
 }
 
+/**
+ * Lowest Common Ancestor - both v1 and v2 descendants have lowest common ancestor
+ * @param {number} v1 first vertice
+ * @param {number} v2 second vertice
+ * @returns {object} node
+ */
+BinaryTree.prototype.lowestCommonAncestor = function(v1, v2){
+	var vertices = [v1, v2], 
+		verticePathMap={}, pathList, 
+		tempNode, commonNodes, minHeightNode,
+		nodeHeight, ancestorNode, verticeFound, i,_self = this;
+	if(!_helper.validateBinaryTree(this.root)){
+		return null;
+	}	
+	for(i = 0; i < vertices.length; i++){
+		tempNode = this.root;
+		verticeFound = false;
+		pathList = [];
+		while(_helper.validateBinaryTree(tempNode)){
+			pathList.push(tempNode);
+			if(tempNode.value === vertices[i]){
+				verticeFound = true;
+				break;
+			}
+			tempNode = vertices[i] < tempNode.value ? tempNode.left : tempNode.right;
+		}
+		if(verticeFound){
+			verticePathMap[vertices[i]] = pathList;
+		}
+	}
+	if(vertices.length!== Object.keys(verticePathMap).length)	{
+		throw new Error("One of the vertices is missing in the tree");
+	}
+	commonNodes = arrayIntersection(verticePathMap[v1], verticePathMap[v2]);
+	if(commonNodes){
+		minHeightNode = -1;
+		commonNodes.forEach(function(node){
+			nodeHeight = _self.getHeight(node);
+			if(minHeightNode === -1 || minHeightNode < nodeHeight){
+				minHeightNode = nodeHeight;
+				ancestorNode = node;
+			}
+		});
+	}
+	return ancestorNode;
+}
+
+/**
+ * Check tree is Binary Search Tree
+ * @returns {boolean}
+ */
+BinaryTree.prototype.isBST = function(){
+
+}
 

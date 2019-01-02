@@ -130,4 +130,14 @@ describe('binary tree',function(){
 		});
 	});
 
+	it("should test lowest common ancestor for binary tree", function(){
+		var valueSet =[4,2,3,1,6,7];
+		for(i = 0; i < valueSet.length; i++){
+			binaryTree.addNode(valueSet[i]);
+		}
+		var ancestorNode = binaryTree.lowestCommonAncestor(1,7)
+		expect(ancestorNode).not.toBeNull();
+		expect(ancestorNode.value).toEqual(4);
+	})
+
 });
