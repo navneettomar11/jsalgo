@@ -52,14 +52,25 @@ var _helper = (function(){
 		
 	function validateBinaryTree(treeNode){
 		return !!treeNode;
-	}	
+	}
+	
+	function isBST(node, minValue, maxValue){
+		if(!node){
+			return true;
+		}
+		if(node.value < minValue || node.value > maxValue){
+			return false;
+		}
+		return isBST(node.left, minValue, node.value - 1) &&  isBST(node.right, node.value + 1, maxValue);
+	}
 	return{
 		validateBinaryTree: validateBinaryTree,
 		getMaxDepth: getMaxDepth,
 		traverseTreeInOrder: traverseTreeInOrder,
 		traverseTreePostOrder: traverseTreePostOrder,
 		traverseTreePreOrder: traverseTreePreOrder,
-		addBinaryNode: addBinaryNode
+		addBinaryNode: addBinaryNode,
+		isBST : isBST
 	};
 })();
 
@@ -251,7 +262,7 @@ BinaryTree.prototype.lowestCommonAncestor = function(v1, v2){
  * Check tree is Binary Search Tree
  * @returns {boolean}
  */
-BinaryTree.prototype.isBST = function(){
-
+BinaryTree.prototype.checkBST = function(){
+	return _helper.isBST(this.root, Number.MIN_VALUE, Number.MAX_VALUE);
 }
 

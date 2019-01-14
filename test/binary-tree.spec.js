@@ -138,6 +138,14 @@ describe('binary tree',function(){
 		var ancestorNode = binaryTree.lowestCommonAncestor(1,7)
 		expect(ancestorNode).not.toBeNull();
 		expect(ancestorNode.value).toEqual(4);
-	})
+	});
+
+	it("should test given tree is binary tree", function(){
+		var valueSet =[4,2,3,1,6,7];
+		for(i = 0; i < valueSet.length; i++){
+			binaryTree.addNode(valueSet[i]);
+		}
+		expect(binaryTree.checkBST(binaryTree.rootNode)).toEqual(true);
+	});
 
 });
