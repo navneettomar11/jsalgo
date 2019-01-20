@@ -18,8 +18,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // 'test/**/*.js',
+      'js/tree/btree.js',
       'js/**/*.js',
-      'test/**/*.[sS]pec.js',
+      'test/**/*.[sS]pec.js'
       // 'dist/*.js',
     ],
     preprocessors: {

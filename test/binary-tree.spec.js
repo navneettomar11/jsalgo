@@ -148,4 +148,18 @@ describe('binary tree',function(){
 		expect(binaryTree.checkBST(binaryTree.rootNode)).toEqual(true);
 	});
 
+	describe('balance binary search tree', function(){
+		it('balance binary search tree', function(){
+			var tree = new BTree(10);
+			var node = tree.root;
+			node = tree.addLeftNode(node, 8);
+			node = tree.addLeftNode(node, 7);
+			node = tree.addLeftNode(node, 6);
+			node = tree.addLeftNode(node, 5);
+			tree.root = balanceTree(tree);
+
+			expect(tree.preOrder(tree.root)).toEqual([7,5,6,8,10])
+		});
+  	});
+
 });
