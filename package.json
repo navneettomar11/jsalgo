@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "Data Structures and algo on javascript",
   "main": "index.js",
-  "bin":{
+  "bin": {
     "jshint": "./node_modules/jshint/bin/jshint"
   },
   "scripts": {
+    "build": "babel src -d dist",
     "docs": "node_modules/.bin/jsdoc -c jsdoc.json",
     "unit": "karma start karma.conf.js ",
     "jshint": "node ./node_modules/jshint/bin/jshint js",
     "test": "npm run unit"
-    
   },
   "keywords": [
     "Algorithms",
@@ -21,6 +21,8 @@
   "author": "Navneet Singh",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
     "docdash": "^1.0.1",
     "jasmine-core": "^3.3.0",
     "jsdoc": "^3.5.5",
