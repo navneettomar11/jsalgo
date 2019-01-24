@@ -15,5 +15,28 @@ var insertSort = (function insertionSortName(){
 			}
 			arr[jdx+1] = pickElem;
 		}
-	}
+	};
+})();
+
+var insertSortRecursive = (function insertSortRecursiveName(){
+	return function insertSortRecursive(arr, n){
+		if(n=== undefined || n<= 1 ) {
+			return;
+		}
+		insertSortRecursive( arr, n-1 );
+		var last = arr[n-1];
+		var j = n - 2;
+		while( j >= 0 && arr[j] > last){
+			arr[j+1] = arr[j];
+			j--;
+		}
+		arr[j+1] = last;
+	};
+})();
+
+
+var binaryInsertionSort = (function(){
+	return function binaryInsertionSort(arr) {
+
+	};
 })();
