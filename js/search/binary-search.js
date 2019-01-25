@@ -84,3 +84,29 @@ function arrayCeil(arr, key){
 	}
 	return arr[high];
 }
+
+/**
+ * Find the Missing Number in a sorted array
+ * @param {array} arr 
+ */
+function findMissingNumberInArray(arr){
+	var low = 0, high, mid, lowdiff, highdiff, middiff;
+	if(!arr){
+		return -1;
+	}
+	high = arr.length;
+	mid = 0;
+	while( (high - low) > 1) {
+		mid = Math.floor(low + high)/2;
+		lowdiff = arr[low] - low;
+		highdiff = arr[high] - high;
+		middiff = arr[mid] - mid;
+
+		if( lowdiff !== middiff) {
+			high = mid;
+		}else if (highdiff !== middiff) {
+			low = mid;
+		}
+	}
+	return (arr[mid]+1);
+}

@@ -62,5 +62,10 @@ describe('searching algorithms', function(){
 			var key = 7;
 			expect(arrayCeil(arr, key)).toEqual(8);
 		});
+
+		it('find missing element in the sorted array', function(){
+			expect(findMissingNumberInArray([5,6,11,12])).toEqual(7);
+		});
+
 	});
 });
