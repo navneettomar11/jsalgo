@@ -66,6 +66,27 @@ describe('searching algorithms', function(){
 		it('find missing element in the sorted array', function(){
 			expect(findMissingNumberInArray([5,6,11,12])).toEqual(7);
 		});
+	});
+	describe("jump search",function(){
+		it("search item in valid data structure", function(){
+			var arr = [1, 3, 5, 7, 9, 11, 13, 15];
+			expect(jumpSearch(arr,0)).toEqual(-1);
+			expect(jumpSearch(arr,3)).toEqual(1);
+		});
+	});
 
+	describe("interpolation search", function(){
+		it("search item in valid data structure", function(){
+			var arr = [1, 3, 5, 7, 9, 11, 13, 15];
+			expect(interpolationSearch(arr,0)).toEqual(-1);
+			expect(interpolationSearch(arr,3)).toEqual(1);
+		});
+	});
+	describe("exponential search", function(){
+		it("search item in valid data structure", function(){
+			var arr = [1, 3, 5, 7, 9, 11, 13, 15];
+			expect(exponentialSearch(arr,0)).toEqual(-1);
+			expect(exponentialSearch(arr,3)).toEqual(1);
+		});
 	});
 });
