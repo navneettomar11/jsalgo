@@ -4,7 +4,7 @@ function maximumSumSubsets(arr){
 	if(len === 0){
 		return 0;
 	}
-	firstMaxSumSet = Math.max(0,arr[0]);
+firstMaxSumSet = Math.max(0,arr[0]);
 	for(i=1; i< len; i++){
 		if(arr[i] < 0){
 			continue;

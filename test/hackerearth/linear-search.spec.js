@@ -12,4 +12,13 @@ describe('hackerearth linear search problems',function(){
 	it('maximun sum set', function(){
 		expect(maximumSumSubsets([1,2,-4,-2,3])).toEqual([6,3]);
 	});
+
+	it('find smallest number repeat k times', function(){
+		expect(smallestNumberRepeatKTimes([1,1,2,2,2,2,3,3,4,4],4)).toEqual(2);
+	});
+
+	it("holiday season",function(){
+		//expect(holidaySeason('ababa')).toEqual(2);
+		expect(holidaySeason('hylobclddzflmzitrxwwsqhozvgexhxjmm')).toEqual(36);
+	});
 });
