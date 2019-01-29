@@ -13,25 +13,27 @@ function holidaySeason(str){
 		return -1;	
 	}
 	count = 0;
+	var cCount = 0, bCCount;
 	for(i = 0; i < len; i++){
 		var aIdx = i;
-		var bIdx = aIdx + 1;
-		var cIdx = searchNextIdx(str, len, bIdx + 1, str[aIdx]);
+		console.log("A:::>>> "+str[aIdx]+" --- "+aIdx);
+		var cIdx = searchNextIdx(str, len, aIdx + 2, str[aIdx]);
+		console.log(str[cIdx]+" --- "+cIdx);
 		if(cIdx !== -1 && str[aIdx]===str[cIdx]){
-			console.log(" a : "+aIdx+" c: "+cIdx);
-			for(j=cIdx+1; j < len; j++){
+			for(j=aIdx + 1; j < cIdx; j++){
 				if(str[j]=== str[aIdx]){
 					continue;
 				}
-				var dIdx = searchNextIdx(str, cIdx, aIdx + 1, str[j]);
+				var dIdx = searchNextIdx(str, len, cIdx + 1, str[j]);
 				if(dIdx !== -1 && str[j] === str[dIdx]){
-					console.log(" b : "+dIdx+" d: "+j);
+					//console.log(" b : "+dIdx+" d: "+j);
 					count++;
 				}
 			}
 		}	
 		
 	}
+	console.log("CCount :::: >>>> "+cCount);
 	return count;
 }
 
