@@ -89,4 +89,12 @@ describe('searching algorithms', function(){
 			expect(exponentialSearch(arr,3)).toEqual(1);
 		});
 	});
+
+	describe("ternary search", function(){
+		it("search item in valid data structure", function(){
+			var arr = [1, 3, 5, 7, 9, 11, 13, 15];
+			expect(tenarySearch(arr,0)).toEqual(-1);
+			expect(tenarySearch(arr,3)).toEqual(1);
+		});
+	});
 });
