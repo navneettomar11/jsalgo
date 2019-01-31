@@ -8,7 +8,6 @@ function findMissingNumber(arr){
 	if(len === 0){
 		return 0;
 	}
-
 	rangeSum = (len * (len + 1))/2;
 	sum = arr.reduce(function(previousValue, currentValue){
 		return previousValue + currentValue;
