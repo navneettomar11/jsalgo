@@ -21,4 +21,8 @@ describe('hackerearth linear search problems',function(){
 		//expect(holidaySeason('ababa')).toEqual(2);
 		expect(holidaySeason('hylobclddzflmzitrxwwsqhozvgexhxjmm')).toEqual(36);
 	});
+
+	it('special sho', function(){
+		expect(specialShop(5,1,2)).toEqual(17);
+	});
 });
