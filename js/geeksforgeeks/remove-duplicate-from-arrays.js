@@ -1,4 +1,4 @@
 
-function removeDuplicateFromArrays(){
-
+function removeDuplicateFromArrays(arr){
+	
 }
