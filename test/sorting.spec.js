@@ -19,4 +19,22 @@ describe("sorting algorithms", function(){
 
 		});
 	});
+
+	describe("bubble sort", function(){
+		it("sort with undefined array", function(){
+			var nums = undefined;
+			bubbleSort(nums);
+			expect(nums).toBeUndefined();
+		});
+		it("sort with blank array", function(){
+			var nums = [];
+			bubbleSort(nums)
+			expect(nums).toEqual(nums);
+		});
+		it("sort with valid array", function(){
+			var nums = [12, 11, 13, 5, 6];
+			bubbleSort(nums);
+			expect(nums).toEqual([5,6,11,12,13]);
+		});
+	});
 });

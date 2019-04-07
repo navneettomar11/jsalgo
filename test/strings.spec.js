@@ -18,5 +18,11 @@ describe('strings', function(){
 			generateAnagrams(str,0,str.length-1,anagrams);
 		})
 	});
+
+	describe('isPlaindrome', function(){
+		it('Deleveled is plaindrome', function(){
+			expect(isPalindrome('Deleveled')).toBeTruthy();
+		});
+	});
 });
 

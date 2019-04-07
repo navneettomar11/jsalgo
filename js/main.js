@@ -47,3 +47,44 @@ function sides(literals, expressions) {
 	return s.sort((a,b)=> parseFloat(a)-parseFloat(b));
 }
 
+function getInvalidELementIdx(sequence){
+	var i, minElem, sequenceLen;
+	sequenceLen = !!sequence ? sequence.length : 0;
+	if(sequenceLen===0 || sequenceLen === 1){
+		return -1;
+	}
+	minElem = parseInt(sequence[0]);
+	for(i = 1; i < sequenceLen; i++){
+		if(parseInt(sequence[i])-minElem <=0){
+			return i-1;
+		}
+		minElem = parseInt(sequence[i]);
+	}
+	return -1;
+}
+
+function almostIncreasingSequence(sequence) {
+    var sequenceLen , idx, count = 0;
+	sequenceLen = !!sequence ? sequence.length : 0;
+	if(sequenceLen===0){
+		return true;
+	}
+	idx = getInvalidELementIdx(sequence);
+    while(idx!==-1){
+		sequence.splice(idx,1);
+		count++;
+		console.log(sequence);
+		idx = getInvalidELementIdx(sequence);
+	}
+    return count <= 1;
+}
+
+//[1,2,3,4,5] , K = 9 ; 1+2+3+4
+function listContiguousElementOfTargetSum(arr, target){
+	var i, alen = !!arr.length?arr.length : 0;
+	if(alen === 0){
+		return 0;
+	}
+	
+}
+
